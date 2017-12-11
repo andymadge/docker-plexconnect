@@ -1,6 +1,6 @@
 FROM resin/rpi-raspbian:jessie
 
-MAINTAINER Alex Varju
+WORKDIR /usr/src/app
 
 RUN apt-get update \
   && apt-get install -y git python vim \
@@ -9,8 +9,7 @@ RUN apt-get update \
 
 COPY start-plexconnect.sh ip-self-external.patch /usr/src/app/
 
-RUN cd /usr/src/app \
-  && git clone https://github.com/iBaa/PlexConnect.git \
+RUN git clone https://github.com/iBaa/PlexConnect.git \
   && cd PlexConnect \
   && perl -pi -e 's/\r\n/\n/g' *py
 
