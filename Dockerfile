@@ -12,8 +12,7 @@ COPY start-plexconnect.sh ip-self-external.patch /usr/src/app/
 RUN cd /usr/src/app \
   && git clone https://github.com/iBaa/PlexConnect.git \
   && cd PlexConnect \
-  && perl -pi -e 's/\r\n/\n/g' *py \
-  && git apply /usr/src/app/ip-self-external.patch
+  && perl -pi -e 's/\r\n/\n/g' *py
 
 # persistent storage for ssl certificates
 VOLUME /plexconnect
