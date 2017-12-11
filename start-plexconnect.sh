@@ -14,6 +14,8 @@ if [ ! -f /data/trailers.cer ]; then
     -x509 -days 7300 -subj "/C=US/CN=trailers.apple.com"
   openssl x509 -in /data/trailers.pem -outform der -out /data/trailers.cer \
     && cat /data/trailers.key >> /data/trailers.pem
+else
+   echo "Existing SSL certificates found at /data/"
 fi
 
 if [ ! -f ATVSettings.cfg ]; then
