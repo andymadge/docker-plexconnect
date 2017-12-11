@@ -3,19 +3,19 @@ FROM resin/rpi-raspbian:jessie
 MAINTAINER Alex Varju
 
 RUN apt-get update \
-  && apt-get install -y git python \
+  && apt-get install -y git python vim \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-COPY start-plexconnect.sh ip-self-external.patch /opt/
+COPY start-plexconnect.sh ip-self-external.patch /usr/src/app/
 
-RUN cd /opt \
+RUN cd /usr/src/app \
   && git clone https://github.com/iBaa/PlexConnect.git \
   && cd PlexConnect \
   && perl -pi -e 's/\r\n/\n/g' *py \
-  && git apply /opt/ip-self-external.patch
+  && git apply /usr/src/app/ip-self-external.patch
 
 # persistent storage for ssl certificates
 VOLUME /plexconnect
 
-CMD /opt/start-plexconnect.sh
+CMD /usr/src/app/start-plexconnect.sh

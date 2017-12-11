@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-cd /opt/PlexConnect
+cd /usr/src/app/PlexConnect
 
 COMMIT_URL=https://github.com/iBaa/PlexConnect/commit/$(git rev-parse HEAD)
 echo
