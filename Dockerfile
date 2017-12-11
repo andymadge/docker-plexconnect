@@ -1,4 +1,5 @@
-FROM debian:jessie
+FROM resin/rpi-raspbian:jessie
+
 MAINTAINER Alex Varju
 
 RUN apt-get update \
