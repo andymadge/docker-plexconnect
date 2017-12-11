@@ -7,7 +7,7 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-COPY start-plexconnect.sh ip-self-external.patch /usr/src/app/
+COPY start-plexconnect.sh /usr/src/app/
 
 RUN git clone https://github.com/iBaa/PlexConnect.git \
   && cd PlexConnect \
