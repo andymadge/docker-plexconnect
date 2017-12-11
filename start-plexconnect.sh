@@ -7,20 +7,20 @@ echo
 echo "PlexConnect build ${COMMIT_URL}"
 echo
 
-if [ ! -f /plexconnect/trailers.cer ]; then
+if [ ! -f /data/trailers.cer ]; then
   echo "Generating SSL certificate"
   openssl req -new -nodes -newkey rsa:2048 \
-    -out /plexconnect/trailers.pem -keyout /plexconnect/trailers.key \
+    -out /data/trailers.pem -keyout /data/trailers.key \
     -x509 -days 7300 -subj "/C=US/CN=trailers.apple.com"
-  openssl x509 -in /plexconnect/trailers.pem -outform der -out /plexconnect/trailers.cer \
-    && cat /plexconnect/trailers.key >> /plexconnect/trailers.pem
+  openssl x509 -in /data/trailers.pem -outform der -out /data/trailers.cer \
+    && cat /data/trailers.key >> /data/trailers.pem
 fi
 
 if [ ! -f ATVSettings.cfg ]; then
-  ln -s /plexconnect/ATVSettings.cfg
+  ln -s /data/ATVSettings.cfg
 fi
 
-cp /plexconnect/trailers.* assets/certificates/
+cp /data/trailers.* assets/certificates/
 
 echo [PlexConnect] > Settings.cfg
 env | grep ^PLEXCONNECT_ | sed -E -e 's/^PLEXCONNECT_//' -e 's/(.*)=/\L\1 = /' >> Settings.cfg

@@ -14,7 +14,4 @@ RUN cd /usr/src/app \
   && cd PlexConnect \
   && perl -pi -e 's/\r\n/\n/g' *py
 
-# persistent storage for ssl certificates
-VOLUME /plexconnect
-
 CMD /usr/src/app/start-plexconnect.sh
