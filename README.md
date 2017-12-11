@@ -1,4 +1,10 @@
-Runs [PlexConnect](https://github.com/iBaa/PlexConnect) in a Docker container.
+Runs [PlexConnect](https://github.com/iBaa/PlexConnect) using https://resin.io/ on Raspberry Pi
+
+Forked from Docker version at https://github.com/varju/docker-plexconnect
+
+Status: PlexConnect runs, but I haven't fully tested it with Apple TV yet.
+
+Original README follows...
 
 Sample execution
 ----------------
